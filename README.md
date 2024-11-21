@@ -1,5 +1,7 @@
 # lrc-offset
 
+LRC lyrics timestamp offset tool.
+
 ## Usage
 
 Depends on the ffmpeg toolkit
