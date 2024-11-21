@@ -9,7 +9,11 @@ git clone https://github.com/k34869/lrc-offset.git
 cd lrc-offset
 npm install
 npm link
-lrc-offset
+
+# lyric type file offset 0.25 seconds output music-out.lrc
+lrc-offset music.lrc -s 0.25 -o music-out.lrc
+# embed type file offset -0.5 seconds output template file
+lrc-offset music.mp3 -s -0.5 -o 
 ```
 
 ## Help
