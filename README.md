@@ -2,6 +2,8 @@
 
 ## Usage
 
+Depends on the ffmpeg toolkit
+
 ```shell
 git clone https://github.com/k34869/lrc-offset.git
 cd lrc-offset
