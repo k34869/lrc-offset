@@ -10,9 +10,9 @@ cd lrc-offset
 npm install
 npm link
 
-# lyric type file offset 0.25 seconds output music-out.lrc
+# input lyric type file offset 0.25 seconds output music-out.lrc
 lrc-offset music.lrc -s 0.25 -o music-out.lrc
-# embed type file offset -0.5 seconds output template file
+# input embed type file offset -0.5 seconds output template file
 lrc-offset music.mp3 -s -0.5 -o 
 ```
 
