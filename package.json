@@ -1,0 +1,13 @@
+{
+  "name": "lrc-offset",
+  "version": "1.2.8",
+  "description": "LRC lyrics timestamp offset tool.",
+  "main": "main.js",
+  "bin": "main.js",
+  "author": "Timeic",
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^11.1.0",
+    "readline-sync": "^1.4.10"
+  }
+}
