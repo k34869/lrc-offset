@@ -1,5 +1,17 @@
 # lrc-offset
 
+## Usage
+
+```shell
+git clone https://github.com/k34869/lrc-offset.git
+cd lrc-offset
+npm install
+npm link
+lrc-offset
+```
+
+## Help
+
 ```
 Usage: lrc-offset [options] [command] <input>
 
