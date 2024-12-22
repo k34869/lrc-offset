@@ -265,13 +265,13 @@ function saveChange(file, res) {
 function exportBeforeSave() {
     const { file } = require('./cache/SAVE-FILE.json')
     const { dir, ext } = parse(file)
-    const next = question(`WARN: export file '${file}'. Do you confirm the operation(Y/n)? `)
+    const next = question(`WARN: restore file before last save: '${file}'. Do you confirm the operation(Y/n)? `)
     if (next === '' || next === 'Y' || next === 'y') {
-        fs.rename(`${__dirname}/cache/SAVE-TEMP`, `${file}.export${ext}`, (err) => { 
+        fs.rename(`${__dirname}/cache/SAVE-TEMP`, `${file}.restore${ext}`, (err) => { 
             if (err) error(err.message)
-            fs.writeFileSync(`${__dirname}/cache/SAVE-FILE.json`, JSON.stringify({file: {before: file, export: `${file}.before${ext}`}}, null, 2))
+            fs.writeFileSync(`${__dirname}/cache/SAVE-FILE.json`, JSON.stringify({file: {before: file, export: `${file}.restore${ext}`}}, null, 2))
             fs.renameSync(`${__dirname}/cache/SAVE-FILE.json`, `${dir}/file.json`)
-            console.log(`INFO: export file '${file}' export successfull`)
+            console.log(`INFO: restore file: '${file}.restore${ext}' restore successfull`)
         })
     } else 
         console.log('INFO: export cancel')
@@ -358,8 +358,8 @@ program
     })
 
 program
-    .command('export-before-save')
-    .description('do you want to save the changes')
+    .command('restore')
+    .description('restore file before last save')
     .action(() => {
         exportBeforeSave()
     })
