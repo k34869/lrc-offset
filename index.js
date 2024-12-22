@@ -8,7 +8,9 @@ if (process.argv.slice(2).length === 0) {
     )
     process.exit(0)
 }
-if (require('which').sync('ffprobe', {nothrow: true}) === null) error(`The 'ffprobe' executable file is missing. Please add the 'ffprobe' executable file to the environment variable 'PATH'`)
+const { sync: whichSync } = require('which')
+if (whichSync('ffprobe', {nothrow: true}) === null) error(`The 'ffprobe' executable file is missing. Please add the 'ffprobe' executable file to the environment variable 'PATH'`)
+if (whichSync('ffmpeg', {nothrow: true}) === null) error(`The 'ffmpeg' executable file is missing. Please add the 'ffmpeg' executable file to the environment variable 'PATH'`)
 const fs = require('fs')
 const { parse, resolve } = require('path')
 const { program } = require('commander')
