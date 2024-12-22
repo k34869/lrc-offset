@@ -1,6 +1,6 @@
 {
   "name": "lrc-offset",
-  "version": "1.3.3",
+  "version": "1.3.4",
   "description": "LRC lyrics timestamp offset tool.",
   "main": "index.js",
   "bin": "index.js",

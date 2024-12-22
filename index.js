@@ -238,6 +238,7 @@ function lrcOutput(file, res, output, convertFmt) {
 function saveChange(file, res) {
     if (res.type === 'lyric') {
         fs.copyFileSync(file, `${__dirname}/cache/SAVE-TEMP`)
+        fs.writeFileSync(`${__dirname}/cache/SAVE-FILE.json`, JSON.stringify({file}))
         fs.writeFileSync(file, res.lrcData, 'utf8')
         console.log(`\nINFO: '${file}' save successfull`)
     } else if (res.type === 'embed') {
