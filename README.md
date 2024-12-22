@@ -7,10 +7,7 @@ LRC lyrics timestamp offset tool.
 Depends on the ffmpeg toolkit
 
 ```shell
-git clone https://github.com/k34869/lrc-offset.git
-cd lrc-offset
-npm install
-npm link
+npm install lrc-offset -g
 
 # input lyric type file offset 0.25 seconds output music-out.lrc
 lrc-offset music.lrc -s 0.25 -o music-out.lrc
