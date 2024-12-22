@@ -263,18 +263,21 @@ function saveChange(file, res) {
  * @returns {void}
 */
 function exportBeforeSave() {
-    const { file } = require('./cache/SAVE-FILE.json')
-    const { dir, ext } = parse(file)
-    const next = question(`WARN: restore file before last save: '${file}'. Do you confirm the operation(Y/n)? `)
-    if (next === '' || next === 'Y' || next === 'y') {
-        fs.rename(`${__dirname}/cache/SAVE-TEMP`, `${file}.restore${ext}`, (err) => { 
-            if (err) error(err.message)
-            fs.writeFileSync(`${__dirname}/cache/SAVE-FILE.json`, JSON.stringify({file: {before: file, export: `${file}.restore${ext}`}}, null, 2))
-            fs.renameSync(`${__dirname}/cache/SAVE-FILE.json`, `${dir}/file.json`)
-            console.log(`INFO: restore file: '${file}.restore${ext}' restore successfull`)
-        })
-    } else 
-        console.log('INFO: export cancel')
+    if (fs.existsSync(`${__dirname}/cache/SAVE-FILE.json`)) {
+        const { file } = require('./cache/SAVE-FILE.json')
+        const { dir, ext } = parse(file)
+        const next = question(`WARN: restore file before last save: '${file}'. Do you confirm the operation(Y/n)? `)
+        if (next === '' || next === 'Y' || next === 'y') {
+            fs.rename(`${__dirname}/cache/SAVE-TEMP`, `${file}.restore${ext}`, (err) => { 
+                if (err) error(err.message)
+                fs.writeFileSync(`${__dirname}/cache/SAVE-FILE.json`, JSON.stringify({file: {before: file, export: `${file}.restore${ext}`}}, null, 2))
+                fs.renameSync(`${__dirname}/cache/SAVE-FILE.json`, `${dir}/file.json`)
+                console.log(`INFO: restore file: '${file}.restore${ext}' restore successfull`)
+            })
+        } else 
+            console.log('INFO: export cancel')
+    } else
+        error('No cache file')
 }
 
 /** 
